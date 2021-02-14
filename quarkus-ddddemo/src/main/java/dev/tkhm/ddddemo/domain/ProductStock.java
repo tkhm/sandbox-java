@@ -29,7 +29,6 @@ public class ProductStock {
     }
 
     public int getCount() {
-        // 呼ばれる度に減らす
-        return this.count--;
+        return this.count;
     }
 }

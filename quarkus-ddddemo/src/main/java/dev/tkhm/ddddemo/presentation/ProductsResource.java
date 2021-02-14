@@ -6,12 +6,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import dev.tkhm.ddddemo.usecases.ProductStockCheckUseCase;
+import dev.tkhm.ddddemo.application.productstock.ProductStockApplicationService;
 
 @Path("/products")
 public class ProductsResource {
     @Inject
-    ProductStockCheckUseCase productStockCheckUseCase;
+    ProductStockApplicationService productStockCheckUseCase;
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
