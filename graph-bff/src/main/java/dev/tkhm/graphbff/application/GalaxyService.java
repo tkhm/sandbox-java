@@ -1,7 +1,11 @@
 package dev.tkhm.graphbff.application;
 
+import dev.tkhm.graphbff.domain.model.Dummy1;
+import dev.tkhm.graphbff.domain.model.Dummy2;
 import dev.tkhm.graphbff.domain.model.Film;
 import dev.tkhm.graphbff.domain.model.Hero;
+import dev.tkhm.graphbff.domain.services.Dummy1Repository;
+import dev.tkhm.graphbff.domain.services.Dummy2Repository;
 import dev.tkhm.graphbff.domain.services.FilmRepository;
 import dev.tkhm.graphbff.domain.services.HeroRepository;
 
@@ -21,6 +25,14 @@ public class GalaxyService {
     @Singleton
     @Default
     HeroRepository heroRepo;
+
+    @Singleton
+    @Default
+    Dummy1Repository dummy1Repo;
+
+    @Singleton
+    @Default
+    Dummy2Repository dummy2Repo;
 
     public GalaxyService() {
     }
@@ -47,5 +59,13 @@ public class GalaxyService {
         return heroRepo.allHeroes().stream()
                 .filter(hero -> hero.getSurname().equals(surname))
                 .collect(Collectors.toList());
+    }
+
+    public Collection<Dummy1> getAllDummies1() {
+        return dummy1Repo.allDummies();
+    }
+
+    public Collection<Dummy2> getAllDummies2() {
+        return dummy2Repo.allDummies();
     }
 }
