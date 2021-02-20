@@ -1,18 +1,18 @@
 package dev.tkhm.graphbff.infrastructure;
 
-import dev.tkhm.graphbff.domain.model.Dummy1;
-import dev.tkhm.graphbff.domain.services.Dummy1Repository;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
-import dev.tkhm.graphbff.infrastructure.dummy1.Dummy1OrmEntity;
-import io.quarkus.hibernate.orm.PersistenceUnit;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.stream.Collectors;
+
+import dev.tkhm.graphbff.domain.model.Dummy1;
+import dev.tkhm.graphbff.domain.services.Dummy1Repository;
+import dev.tkhm.graphbff.infrastructure.dummy1.Dummy1OrmEntity;
+import io.quarkus.hibernate.orm.PersistenceUnit;
 
 @ApplicationScoped
 @Default
@@ -28,9 +28,7 @@ public class PostgresDummy1Repository implements Dummy1Repository {
                     .createQuery("SELECT dummy1 FROM Dummy1OrmEntity dummy1", Dummy1OrmEntity.class);
             Collection<Dummy1> dummyEntities = dummy1Query.getResultList()
                     .stream()
-                    .map(each -> {
-                        return new Dummy1().setId(each.id);
-                    }).collect(Collectors.toList());
+                    .map(each -> each.toModel()).collect(Collectors.toList());
             return dummyEntities;
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,11 +38,9 @@ public class PostgresDummy1Repository implements Dummy1Repository {
 
     @Override
     public void remove(final Dummy1 dummy) {
-
     }
 
     @Override
     public void save(final Dummy1 dummy) {
-
     }
 }
