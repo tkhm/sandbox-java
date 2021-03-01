@@ -56,3 +56,19 @@ If you want to learn more about building native executables, please consult http
 REST is easy peasy with this Hello World RESTEasy resource.
 
 [Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+
+# Sidenote
+
+- At the moment, this example will require your local postgres. You can run it with the following:
+
+    ```
+    docker run --name mydb1 -e POSTGRES_PASSWORD=postgres -d -p 15432:5432 postgres:11
+    ```
+
+- Also if you need to insert some data, you can do it with the following example command:
+
+    ```
+    psql postgres://localhost:15432 -U postgres
+
+    postgres=# INSERT INTO dummy1 VALUES ('dummyid1');
+    ```
