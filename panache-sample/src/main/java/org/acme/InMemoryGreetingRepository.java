@@ -15,7 +15,6 @@ import java.util.Set;
 
 @ApplicationScoped
 @Default
-@UnlessBuildProfile("prod")
 public class InMemoryGreetingRepository implements GreetingRepository {
     private Map<String, GreetingModel> store;
 
