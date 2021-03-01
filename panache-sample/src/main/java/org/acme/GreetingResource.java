@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -28,10 +29,11 @@ public class GreetingResource {
         return String.valueOf(greetingService.fetchAllGreetings().size());
     }
 
+    // it must be POST, but atm I'll use this as POST
     @GET
     @Path("/greetings/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public void postGreetingsId(String id) {
+    public void postGreetingsId(@PathParam("id") String id) {
         greetingService.addGreeting(id);
     }
 }
